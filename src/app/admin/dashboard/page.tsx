@@ -49,7 +49,7 @@ export default function Home() {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const handleTabChange = (tab) => {
+  const handleTabChange = (tab: string) => {
     setActiveTab(tab);
   };
 
@@ -265,12 +265,64 @@ export default function Home() {
             )}
 
             {activeTab === "banner" && (
-              <Card className="shadow-sm border-0">
-                <Card.Body>
-                  <Card.Title className="text-primary mb-4">Banner Management</Card.Title>
-                  <p>Here you can manage your website banners. Add functionality to upload, edit, and delete banners.</p>
-                </Card.Body>
-              </Card>
+              <>
+                <Card className="shadow-sm border-0 mb-4">
+                  <Card.Body>
+                    <Card.Title className="text-primary mb-4">Add New Banner</Card.Title>
+                    <form>
+                      <div className="mb-3">
+                        <label htmlFor="bannerTitle" className="form-label">Banner Title</label>
+                        <input type="text" className="form-control" id="bannerTitle" placeholder="Enter banner title" />
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="bannerImage" className="form-label">Banner Image</label>
+                        <input type="file" className="form-control" id="bannerImage" />
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="bannerLink" className="form-label">Banner Link</label>
+                        <input type="url" className="form-control" id="bannerLink" placeholder="Enter banner link" />
+                      </div>
+                      <Button variant="primary" type="submit">Add Banner</Button>
+                    </form>
+                  </Card.Body>
+                </Card>
+
+                <Card className="shadow-sm border-0">
+                  <Card.Body>
+                    <Card.Title className="text-primary mb-4">Existing Banners</Card.Title>
+                    <Table hover responsive>
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th>Image</th>
+                          <th>Link</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Summer Sale</td>
+                          <td>summer-sale.jpg</td>
+                          <td>/summer-sale</td>
+                          <td>
+                            <Button variant="outline-primary" size="sm" className="me-2">Edit</Button>
+                            <Button variant="outline-danger" size="sm">Delete</Button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>New Collection</td>
+                          <td>new-collection.jpg</td>
+                          <td>/new-collection</td>
+                          <td>
+                            <Button variant="outline-primary" size="sm" className="me-2">Edit</Button>
+                            <Button variant="outline-danger" size="sm">Delete</Button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </Card.Body>
+                </Card>
+              </>
             )}
 
             {activeTab === "team" && (
